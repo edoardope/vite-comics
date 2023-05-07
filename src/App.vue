@@ -32,7 +32,8 @@ export default {
           iconName: 'DC POWER VISA',
           iconUrl: 'buy-dc-power-visa.svg'
         },
-      ]
+      ],
+
     }
   },
   methods: {
