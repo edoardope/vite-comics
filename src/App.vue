@@ -1,46 +1,51 @@
 <script>
 import MainContent from "./components/MainContent.vue"
+import JumboTron from "./components/JumboTron.vue"
 
 export default {
   name: "App",
   components: {
+    JumboTron,
     MainContent,
   },
   data() {
     return {
+      a: true,
       sections: [
         {
           iconName: 'DIGITAL COMICS',
-          iconUrl: './assets/img/buy-comics-digital-comics.png'
+          iconUrl: 'buy-comics-digital-comics.png'
         },
         {
           iconName: 'DC MERCHANDISE',
-          iconUrl: './assets/img/buy-comics-merchandise.png'
+          iconUrl: 'buy-comics-merchandise.png'
         },
         {
           iconName: 'SUBSCRIPTION',
-          iconUrl: './assets/img/buy-comics-subscription.png'
+          iconUrl: 'buy-comics-subscriptions.png'
         },
         {
           iconName: 'COMIC SHOP LOCATOR',
-          iconUrl: './assets/img/buy-comics-shop-locator.png'
+          iconUrl: 'buy-comics-shop-locator.png'
         },
         {
           iconName: 'DC POWER VISA',
-          iconUrl: './assets/img/buy-dc-power-visa.png'
+          iconUrl: 'buy-dc-power-visa.svg'
         },
       ]
     }
   },
   methods: {
-
+    getImagePath: function (imgPath) {
+      return new URL(imgPath, import.meta.url).href;
+    }
   }
 }
 </script>
 
 <template>
   <header>
-    <img src="./assets/img/dc-logo.png" alt="">
+    <img src="./assets/dc-logo.png" alt="">
     <ul>
       <li><a href="">CHARACTERS</a></li>
       <li><a href="">COMICS</a></li>
@@ -54,10 +59,11 @@ export default {
       <li><a href="">SHOP</a></li>
     </ul>
   </header>
-  <MainContent />
+  <JumboTron />
+  <MainContent v-if="a" />
   <section id="a">
-    <span v-for="(element, index) in sections" :key="index">
-      <img src="./assets/img/buy-comics-digital-comics.png" :alt="element.iconName">
+    <span v-for="(  element, index  ) in      sections     " :key="index">
+      <img :src="getImagePath(`./assets/${element.iconUrl}`)" :alt="element.iconName">
       <span>{{ element.iconName }}</span>
     </span>
   </section>
@@ -115,11 +121,11 @@ export default {
       </div>
       <div>
         <h2>FOLLOW US</h2>
-        <span id="e"><i class="fa-brands fa-facebook-f"></i></span>
-        <span id="e"><i class="fa-brands fa-twitter"></i></span>
-        <span id="e"><i class="fa-brands fa-youtube"></i></span>
-        <span id="e"><i class="fa-brands fa-pinterest"></i></span>
-        <span id="e"><i class="fa-solid fa-location-dot"></i></span>
+        <img src="./assets/footer-facebook.png" alt="">
+        <img src="./assets/footer-twitter.png" alt="">
+        <img src="./assets/footer-youtube.png" alt="">
+        <img src="./assets/footer-pinterest.png" alt="">
+        <img src="./assets/footer-periscope.png" alt="">
       </div>
     </section>
   </footer>
